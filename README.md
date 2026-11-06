@@ -2,9 +2,6 @@
 
 API REST de mensajería por salas, construida con Node.js, Express 5, MongoDB y Mongoose 9.
 
-- Especificación del ejercicio: [docs/enunciado.md](docs/enunciado.md)
-- Reparto del trabajo e instrucciones para agentes: [AGENTS.md](AGENTS.md)
-
 ## Requisitos
 
 - Node.js 20.19 o superior. Mongoose 9 lo exige, aunque el enunciado indica Node 18.
@@ -61,11 +58,11 @@ Todas las rutas llevan el prefijo `/api/v1`. Un endpoint que aún no está imple
 | 3 | GET | `/users/:id` | Obtener un usuario | 200 | Obligatorio |
 | 4 | PATCH | `/users/:id/status` | Cambiar estado | 200 | Opcional |
 | 5 | POST | `/rooms` | Crear sala (body incluye `ownerId`) | 201 | Obligatorio |
-| 6 | GET | `/rooms` | Listar salas públicas con número de miembros | 200 | Obligatorio |
+| 6 | GET | `/rooms` | Listar salas públicas con número de miembros (`memberCount`) | 200 | Obligatorio |
 | 7 | GET | `/rooms/:id` | Detalle de sala con sus miembros | 200 | Obligatorio |
 | 8 | POST | `/rooms/:id/join` | Unirse a una sala (body: `userId`) | 200 | Obligatorio |
-| 9 | POST | `/rooms/:id/leave` | Salir de una sala | 200 | Opcional |
-| 10 | DELETE | `/rooms/:id` | Eliminar sala y sus mensajes (solo owner) | 204 | Opcional |
+| 9 | POST | `/rooms/:id/leave` | Salir de una sala (body: `userId`) | 200 | Opcional |
+| 10 | DELETE | `/rooms/:id` | Eliminar sala y sus mensajes (solo owner; body: `userId`) | 204 | Opcional |
 | 11 | POST | `/rooms/:id/messages` | Enviar mensaje (body: `senderId`, `content`) | 201 | Obligatorio |
 | 12 | GET | `/rooms/:id/messages` | Listar mensajes (`?page=1&limit=20`), más recientes primero | 200 | Obligatorio |
 | 13 | PUT | `/messages/:id` | Editar contenido (marca `edited: true`) | 200 | Obligatorio |
